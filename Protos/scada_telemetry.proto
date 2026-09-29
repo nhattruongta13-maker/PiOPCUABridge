@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "PiOPCUABridge.Protos";
+
+package scada.v1;
+
+// The Master Remote Service Entry Contract
+service ScadaTransmissionEngine {
+  // A high-speed, unary binary communication transmission pipeline
+  rpc StreamTelemetryNode (TelemetryDataPacket) returns (StreamAckResponse);
+}
+
+// The Packed Binary Telemetry Data Structure Definition
+message TelemetryDataPacket {
+  float live_voltage = 1;      // Field 1: Packed 32-bit floating-point lane
+  double anomaly_score = 2;    // Field 2: Packed 64-bit double precision lane
+  string operator_status = 3;  // Field 3: Compressed UTF-8 string token lane
+  string button_status = 4;    // Field 4: Compressed UTF-8 string token lane
+}
+
+// The Lightweight Binary Acknowledgment Return Packet
+message StreamAckResponse {
+  bool success = 1;            // Field 1: Single bit boolean flag verification
+  string confirmation_msg = 2; // Field 2: Validation status string
+}
+

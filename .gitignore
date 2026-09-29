@@ -1,0 +1,19 @@
+# Build artifacts
+bin/
+obj/
+
+# Python virtual environment
+aienv/
+
+# OPC UA security material - contains private keys, must never be committed
+opc_server_certificate/
+opc_trust_store/
+
+# Runtime data / generated artifacts (regenerate via train_and_export.py)
+substation_data.db
+substation_model.onnx
+live_capture.jpg
+
+# IDE
+.vs/
+.vscode/
